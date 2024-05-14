@@ -3,7 +3,8 @@ from copy import copy, deepcopy
 from connect4 import Connect4
 import math
 
-class MinMaxAgent:
+
+class MinMaxAgentWithoutHeu:
     def __init__(self, token, max_depth=5):
         self.my_token = token
         self.max_depth = max_depth
@@ -47,21 +48,13 @@ class MinMaxAgent:
                 return 0
 
         score = 0
-
-        for token in game.center_column():
-            if token == '_':
-                continue
-            if token == self.my_token:
-                score += 10000
-
-
-        for four in game.iter_fours():
-            if four.count(self.my_token) == 3 and four.count('_') == 1:
-                score += 100
-            elif four.count(self.my_token) == 2 and four.count('_') == 2:
-                score += 10
-            else:
-                score += 1
+        # for four in game.iter_fours():
+        #     if four.count(self.my_token) == 3 and four.count('_') == 1:
+        #         score += 100
+        #     elif four.count(self.my_token) == 2 and four.count('_') == 2:
+        #         score += 10
+        #     elif four.count(self.my_token) == 1 and four.count('_') == 3:
+        #         score += 1
 
         return score
 

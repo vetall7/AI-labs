@@ -5,7 +5,7 @@ from connect4 import Connect4
 
 
 class AlphaBetaAgent:
-    def __init__(self, token, max_depth=3):
+    def __init__(self, token, max_depth=5):
         self.my_token = token
         self.max_depth = max_depth
 
@@ -47,9 +47,9 @@ class AlphaBetaAgent:
     def evaluate(self, game):
         if game.game_over:
             if game.wins == self.my_token:
-                return math.inf
+                return (math.inf - 1)
             elif game.wins is not None:
-                return -math.inf
+                return -(math.inf - 1)
             else:
                 return 0
 
